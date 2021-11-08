@@ -12,13 +12,10 @@ class Reward {
     }
 
     draw() {
+
         if (this.isShowing) {
             this.image.resize(windowWidth, windowHeight);
             image(this.image, 0, 0);
-           
-            console.log ('drawRe');
-
-            
 
         }
 

@@ -1,4 +1,4 @@
-var indexReward = 0 ;
+var indexReward = 0;
 var rewards = [];
 
 
@@ -10,52 +10,59 @@ function preload() {
   rewards.push(new Reward("images/Rock-3.png"));
   rewards.push(new Reward("images/Rock-4.png"));
   rewards.push(new Reward("images/Rock-5.png"));
-   
+
 }
 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  console.log('preload');
-  preload();
-   
-  //for (let Reward of rewards){
-    
-    
-   
- }
 
-  
+  preload();
+
+  for (let Reward of rewards) {
+
+
+
+  }
+}
+
 
 
 
 
 function draw() {
   //background(220);
-  show();
-  for (let i = 0 ; i<= indexReward; i++){
-    rewards[i];
-  
-    rewards[i].draw();
 
-    
-  }
-  
-  function keyPressed() {
-    if (keyCode === UP_ARROW) {
-      indexReward ++;
-    } else if (keyCode === DOWN_ARROW) {
-      indexReward--;
-      console.log ('drawKe');
+  for (let i = 0; i <= indexReward; i++) {
+    rewards[i];
+
+    if (rewards[i]) {
+      rewards[i].show();
+      rewards[i].draw();
+
     }
+
+
   }
+
 }
 
-function show() {
+function keyPressed() {
+  if (keyCode === UP_ARROW) {
+    if (indexReward < 5) {
+      indexReward++;
+      
+    }
 
 
 
+  } else if (keyCode === DOWN_ARROW) {
+
+    if (indexReward > 0) {
+      indexReward--;
+      
+    }
   
- 
+  }
 
 }
