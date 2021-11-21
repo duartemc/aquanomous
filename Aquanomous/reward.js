@@ -1,7 +1,8 @@
 class Reward {
-    constructor(imageName) {
+    constructor(imageName, id) {
         this.image = loadImage(imageName);
         this.isShowing = false;
+        this.id = id;
     }
 
     show() {
