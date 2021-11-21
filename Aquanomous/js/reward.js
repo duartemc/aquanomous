@@ -21,4 +21,11 @@ class Reward {
         }
 
     }
+    
+    update(){
+
+    }
+
+
+
 }
