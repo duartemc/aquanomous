@@ -7,25 +7,32 @@ var fountains = [];
 function preload() {
   backGround = new Reward("images/Water.png", 0);
 
-  rewards.push(new Fountain(1, 1000, 250));
-  rewards.push(new Fountain(2, 1000, 900));
-  rewards.push(new Fountain(3, 1000, 1800));
-  rewards.push(new Fountain(4, 1000, 2300));
+  rewards.push(new Fountain(1, 1000, 200));
+  rewards.push(new Fountain(2, 1000, 770));
+  rewards.push(new Fountain(3, 1000, 1350));
 
-  rewards.push(new Reward("images/Rock-1.png", 5));
-  rewards.push(new Reward("images/Rock-2.png", 6));
-  rewards.push(new Reward("images/Rock-3.png", 7));
-  rewards.push(new Reward("images/Rock-4.png", 8));
-  rewards.push(new Reward("images/Rock-5.png", 9));
-
-
+  rewards.push(new Reward("images/Rock-1.png", 4));
+  rewards.push(new Reward("images/Rock-2.png", 5));
+  rewards.push(new Reward("images/Rock-3.png", 6));
+  rewards.push(new Reward("images/Rock-4.png", 7));
+  rewards.push(new Reward("images/Rock-5.png", 8));
 }
 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+}
 
-  preload();
+function orderToDraw(rewards){
+  var orderedRewards = [];
+
+  //add fountains
+  for(let reward of rewards) {
+    if(reward ) {
+
+    }
+  }
+
 }
 
 
@@ -47,14 +54,15 @@ function draw() {
 
 
    }*/
+  //rewardsOn.sort((a, b) => a.id > b.id);
   for (let reward of rewardsOn) {
+    //print("id: " + reward.id);
     reward.show();
     reward.draw();
   }
 }
 
 function keyPressed() {
-
   if (keyCode === UP_ARROW) {
 
     if (indexReward < rewards.length) {
@@ -67,8 +75,8 @@ function keyPressed() {
 
         if (rewardsOn.find(value => value.id == reward.id) == undefined) {
 
-          if (reward.id == 9 &&
-            (rewardsOn.find(value => value.id == 6) == undefined || rewardsOn.find(value => value.id == 7) == undefined || rewardsOn.find(value => value.id == 8) == undefined))
+          if (reward.id == 8 &&
+            (rewardsOn.find(value => value.id == 5) == undefined || rewardsOn.find(value => value.id == 6) == undefined || rewardsOn.find(value => value.id == 7) == undefined))
             continue;
 
           rewardsOn.push(reward);
@@ -87,4 +95,5 @@ function keyPressed() {
 
   }
 
+  rewardsOn.sort((a, b) => a.id - b.id);
 }

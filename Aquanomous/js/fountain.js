@@ -56,7 +56,7 @@ class Particle {
             this.y = this.originY;
             this.x = this.originX;
             this.alpha = 750;
-            print(this.id + ' ' + this.x + ' ' + this.alpha)
+            //print(this.id + ' ' + this.x + ' ' + this.alpha)
         }
     }
 
