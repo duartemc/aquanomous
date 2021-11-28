@@ -4,6 +4,7 @@ var rewardsOn = [];
 var backGround;
 var fountains = [];
 
+
 function preload() {
   backGround = new Reward("images/Water.png", 0);
 
@@ -23,12 +24,12 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
-function orderToDraw(rewards){
+function orderToDraw(rewards) {
   var orderedRewards = [];
 
   //add fountains
-  for(let reward of rewards) {
-    if(reward ) {
+  for (let reward of rewards) {
+    if (reward) {
 
     }
   }
@@ -81,7 +82,7 @@ function keyPressed() {
 
           rewardsOn.push(reward);
           rewardFound = true;
-          
+
         }
       }
     }
