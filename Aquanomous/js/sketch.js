@@ -3,6 +3,7 @@ var rewards = [];
 var rewardsOn = [];
 var backGround;
 var fountains = [];
+var img;
 
 
 function preload() {
@@ -17,11 +18,15 @@ function preload() {
   rewards.push(new Reward("images/Rock-3.png", 6));
   rewards.push(new Reward("images/Rock-4.png", 7));
   rewards.push(new Reward("images/Rock-5.png", 8));
+  
+  img=loadImage("images/Fish.png");
+
 }
 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  
 }
 
 function orderToDraw(rewards) {
@@ -44,6 +49,7 @@ function draw() {
   //background(220);
   backGround.draw();
   backGround.show();
+ 
   /* for (let i = 0; i <= indexReward; i++) {
      rewards[i];
 
@@ -61,6 +67,8 @@ function draw() {
     reward.show();
     reward.draw();
   }
+  //imageMode(CENTER);
+  image(img,mouseX,mouseY);
 }
 
 function keyPressed() {
