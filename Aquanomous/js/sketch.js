@@ -5,8 +5,11 @@ var backGround;
 var fountains = [];
 
 
+
+
 function preload() {
   backGround = new Reward("images/Water.png", 0);
+
 
   rewards.push(new Fountain(1, 1000, 200));
   rewards.push(new Fountain(2, 1000, 770));
@@ -17,6 +20,10 @@ function preload() {
   rewards.push(new Reward("images/Rock-3.png", 6));
   rewards.push(new Reward("images/Rock-4.png", 7));
   rewards.push(new Reward("images/Rock-5.png", 8));
+
+  
+  
+  //fish = new Reward("image/Fish.png",9);
 }
 
 
@@ -44,6 +51,10 @@ function draw() {
   //background(220);
   backGround.draw();
   backGround.show();
+  
+ // fish.draw();
+  //fish.show();
+
   /* for (let i = 0; i <= indexReward; i++) {
      rewards[i];
 
@@ -60,6 +71,7 @@ function draw() {
     //print("id: " + reward.id);
     reward.show();
     reward.draw();
+    
   }
 }
 
