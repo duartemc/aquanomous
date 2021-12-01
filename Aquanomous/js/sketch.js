@@ -12,23 +12,18 @@ function preload() {
   backGround = new Reward("images/Water.png", 0);
 
 
-  rewards.push(new Fountain(1, 1000, 200));
-  rewards.push(new Fountain(2, 1000, 770));
-  rewards.push(new Fountain(3, 1000, 1350));
+  rewards.push(new Fountain(1, createVector(200, 1000)));
+  rewards.push(new Fountain(2, createVector(770, 1000)));
+  rewards.push(new Fountain(3, createVector(1350, 1000)));
 
   rewards.push(new Reward("images/Rock-1.png", 4));
   rewards.push(new Reward("images/Rock-2.png", 5));
   rewards.push(new Reward("images/Rock-3.png", 6));
   rewards.push(new Reward("images/Rock-4.png", 7));
   rewards.push(new Reward("images/Rock-5.png", 8));
-
   
   img=loadImage("images/Fish.png");
 
-
-
-  
-  
   //fish = new Reward("image/Fish.png",9);
 }
 
@@ -73,15 +68,17 @@ function draw() {
 
 
    }*/
+
   //rewardsOn.sort((a, b) => a.id > b.id);
   for (let reward of rewardsOn) {
     //print("id: " + reward.id);
+   reward.touchedByTheFish(createVector(mouseX, mouseY));
+
     reward.show();
     reward.draw();
-    
   }
   //imageMode(CENTER);
-  image(img,mouseX,mouseY);
+  image(img, mouseX - (img.width/2), mouseY - (img.height/2));
 }
 
 function keyPressed() {

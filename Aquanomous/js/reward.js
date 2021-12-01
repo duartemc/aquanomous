@@ -26,6 +26,10 @@ class Reward {
 
     }
 
+    touchedByTheFish(fishPosition) {
+
+    }
+
 
 
 }

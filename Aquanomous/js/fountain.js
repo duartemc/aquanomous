@@ -1,69 +1,70 @@
 class Fountain extends Reward {
-    constructor(id, y, x) {
+    constructor(id, origin) {
         super("images/Rock-1.png", 1);
-
-        this.originX = x;
-        this.originY = y;
+        this.origin = origin;
         this.id = id;
-
-
-
         this.particles = [];
 
         for (let i = 0; i < 400; i++) {
 
-            this.particles.push(new Particle(id, y, x));
+            this.particles.push(new Particle(id, this.origin.copy()));
         }
 
 
     }
 
     draw() {
-
-
-
         for (let i = 0; i < 400; i++) {
 
             this.particles[i].update();
             this.particles[i].show();
         }
     }
+
+    touchedByTheFish(fishPosition) {
+        if (this.origin.x + 100 > fishPosition.x && this.origin.x - 100 < fishPosition.x) {
+            for (let i = 0; i < 400; i++) {
+                this.particles[i].applyForce(createVector(5,0));
+            }
+        }
+    }
 }
 
 class Particle {
-    constructor(id, y, x) {
+    constructor(id, position) {
         this.id = id;
-        this.originX = x;
-        this.originY = y;
-
-
-        this.x = x;
-        this.y = y;
-        this.vx = random(-1, 1);
-        this.vy = random(-2, -5);
+        this.origin = position.copy();
+        this.position = position.copy();
+        this.velocity = createVector(random(-1, 1), random(-2, -5));
+        this.acceleration = createVector(0, 0);
 
         //this.alpha = 255;
         this.alpha = 700;
     }
 
-
     update() {
-        this.x += this.vx;
-        this.y += this.vy;
+        print( this.origin);
         this.alpha -= 5;
 
-        if (this.y < 0) {
-            this.y = this.originY;
-            this.x = this.originX;
+        this.velocity.add(this.acceleration.copy());
+        this.position.add(this.velocity.copy());
+        this.acceleration.set(0, 0);
+
+        if (this.position.y < 0) {
+            this.position.set(this.origin.copy());
             this.alpha = 750;
             //print(this.id + ' ' + this.x + ' ' + this.alpha)
         }
     }
 
+    applyForce(force) {
+        this.acceleration.add(force);
+    }
+
     show() {
         stroke(255, this.alpha);
         fill(255, 10);
-        ellipse(this.x, this.y, 16);
+        ellipse(this.position.x, this.position.y, 16);
     }
 
 }
