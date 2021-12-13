@@ -25,7 +25,7 @@ class Fountain extends Reward {
         if (this.origin.x + 100 > fishPosition.x && this.origin.x - 100 < fishPosition.x) {
             print("acelerou");
             for (let i = 0; i < 400; i++) {
-                this.particles[i].applyForce(createVector(5, 0));
+                this.particles[i].applyForce(createVector(random(-1,1)));
             }
         }
     }
@@ -51,6 +51,7 @@ class Particle {
         this.velocity.add(this.acceleration.copy());
         this.position.add(this.velocity.copy());
         this.acceleration.set(0, 0);
+        this.applyFriction();
 
         if (this.position.y < 0) {
             this.position = this.origin.copy();
@@ -70,14 +71,17 @@ class Particle {
     }
 
     applyFriction() {
-        let c = 0.01;
+        let dif = (this.position.x - this.origin.x );
+        if (dif > -20 && dif < 20 )
+            return;
+        let c = 0.05;
         let friction = this.velocity.copy();
         friction.normalize();
         friction.mult(-1);
         friction.mult(c);
 
-        this.applyForce(friction);
-        force.Add(random(1, -1));
+        this.applyForce(createVector(friction.x,0));
+       
 
     }
 

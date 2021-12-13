@@ -21,6 +21,9 @@ function preload() {
   rewards.push(new Reward("images/Rock-3.png", 6));
   rewards.push(new Reward("images/Rock-4.png", 7));
   rewards.push(new Reward("images/Rock-5.png", 8));
+
+  //rewards.push(new Algaes(9, createVector(300,1000)));
+
   
   img=loadImage("images/Fish.png");
 
