@@ -78,7 +78,8 @@ function draw() {
     reward.draw();
   }
   //imageMode(CENTER);
-  image(img, mouseX - (img.width/2), mouseY - (img.height/2));
+  image(img, mouseX - (img.width/4), mouseY - (img.height/4), 270,200);
+  
 }
 
 function keyPressed() {
